@@ -1,8 +1,9 @@
 #!/usr/bin/ruby -w
 
-require File.join(File.dirname(__FILE__), 'gilded_rose')
+$LOAD_PATH.unshift(File.join('.'))
 
-puts "OMGHAI!"
+require 'goldshire_inn'
+
 items = [
   Item.new(name="+5 Dexterity Vest", sell_in=10, quality=20),
   Item.new(name="Aged Brie", sell_in=2, quality=0),
@@ -21,7 +22,7 @@ if ARGV.size > 0
   days = ARGV[0].to_i + 1
 end
 
-gilded_rose = GildedRose.new items
+goldshire_inn = GoldshireInn.new items
 (0...days).each do |day|
   puts "-------- day #{day} --------"
   puts "name, sellIn, quality"
@@ -29,5 +30,5 @@ gilded_rose = GildedRose.new items
     puts item
   end
   puts ""
-  gilded_rose.update_quality
+  goldshire_inn.update_quality
 end
